@@ -1,0 +1,84 @@
+# Web1
+docker run -d --name web1 \
+  --network lab10net \
+  -p 8081:80 \
+  -v //c/sem6/Docker/Lab10/html:/usr/share/nginx/html:ro \
+  -v //c/sem6/Docker/Lab10/web1_logs:/var/log/nginx \
+  nginx:latest
+
+# Web2
+docker run -d --name web2 \
+  --network lab10net \
+  -p 8082:80 \
+  -v //c/sem6/Docker/Lab10/html:/usr/share/nginx/html:ro \
+  -v //c/sem6/Docker/Lab10/web2_logs:/var/log/nginx \
+  nginx:latest
+
+# Web3
+docker run -d --name web3 \
+  --network lab10net \
+  -p 8083:80 \
+  -v //c/sem6/Docker/Lab10/html:/usr/share/nginx/html:ro \
+  -v //c/sem6/Docker/Lab10/web3_logs:/var/log/nginx \
+  nginx:latest
+
+
+
+
+
+  # Web1 
+docker run -d --name web1 \
+  --network lab10net \
+  -p 8081:80 \
+  -v //c/sem6/Docker/Lab10/html:/usr/share/nginx/html:ro,Z \
+  -v //c/sem6/Docker/Lab10/web1_logs:/var/log/nginx \
+  nginx:latest
+
+# Web2 
+docker run -d --name web2 \
+  --network lab10net \
+  -p 8082:80 \
+  -v //c/sem6/Docker/Lab10/html:/usr/share/nginx/html:ro,Z \
+  -v //c/sem6/Docker/Lab10/web2_logs:/var/log/nginx \
+  nginx:latest
+
+# Web3
+docker run -d --name web3 \
+  --network lab10net \
+  -p 8083:80 \
+  -v //c/sem6/Docker/Lab10/html:/usr/share/nginx/html:ro,Z \
+  -v //c/sem6/Docker/Lab10/web3_logs:/var/log/nginx \
+  nginx:latest
+
+### Create network
+docker network create lab10net
+
+
+### MOUNT ###
+
+# web1
+docker run -d --name web1_mount \
+  --network lab10net \
+  -p 8091:80 \
+  --mount type=bind,source=C:/sem6/Docker/Lab10/html/web1.html,target=/usr/share/nginx/html/index.html,readonly \
+  --mount type=bind,source=C:/sem6/Docker/Lab10/web_mount/lab10_logs/web1,target=/var/log/nginx \
+  nginx:latest
+
+# web2
+docker run -d --name web2_mount \
+  --network lab10net \
+  -p 8092:80 \
+  --mount type=bind,source=C:/sem6/Docker/Lab10/html/web2.html,target=/usr/share/nginx/html/index.html,readonly \
+  --mount type=bind,source=C:/sem6/Docker/Lab10/web_mount/lab10_logs/web2,target=/var/log/nginx \
+  nginx:latest
+
+# web3
+docker run -d --name web3_mount \
+  --network lab10net \
+  -p 8093:80 \
+  --mount type=bind,source=C:/sem6/Docker/Lab10/html/web3.html,target=/usr/share/nginx/html/index.html,readonly \
+  --mount type=bind,source=C:/sem6/Docker/Lab10/web_mount/lab10_logs/web3,target=/var/log/nginx \
+  nginx:latest
+
+
+  
