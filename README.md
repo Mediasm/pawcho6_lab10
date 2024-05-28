@@ -10,6 +10,7 @@
 ```
 docker network create lab10net
 ```
+![Code_aGEk4FZoBQ](https://github.com/Mediasm/pawcho6_lab10/assets/157932032/930dba9b-a2d7-4279-92ee-07dd4f999573)
 
 ### Create web containers
 Web1:
@@ -39,3 +40,6 @@ docker run -d --name web3_mount \
   --mount type=bind,source=C:/sem6/Docker/Lab10/lab10_logs/web3,target=/var/log/nginx \
   nginx:latest
 ```
+## Verification
+![Docker_Desktop_xQDay4Fay2](https://github.com/Mediasm/pawcho6_lab10/assets/157932032/445ff1e2-6656-4275-98c0-76931bfb42b2)
+
